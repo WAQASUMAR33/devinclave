@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+
+model Company{
+  id            Int       @id @default(autoincrement())
+  com_title      String   
+  comp_logo      String 
+  comp_description  String
+  comp_phone  String
+  comp_email String
+  comp_website String
+  comp_rating String
+  com_details String 
+  created_at DateTime
+  updated_at DateTime 
+}
+
+model Offers{
+  id Int @id @default(autoincrement())
+  comp_id String
+  offer_type String
+  offer_title String
+  offer_code String
+  offer_description  String 
+  offer_link1 String
+  offer_link2 String 
+  offer_users String
+  offer_expiry String
+  offer_isverify String 
+  offer_details String
+  created_at DateTime
+  updated_at DateTime 
+}
