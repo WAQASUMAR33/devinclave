@@ -43,7 +43,7 @@ export async function GET() {
     const companies = await prisma.Company.findMany();
     return NextResponse.json(companies);
   } catch (error) {
-    console.log("Error getting Baking color :", error);
+    console.log("Error getting Data :", error);
     return NextResponse.error("Internal Server Error", 500);
   }
 }

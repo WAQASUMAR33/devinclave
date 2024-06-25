@@ -12,12 +12,12 @@ model Company{
   id            Int       @id @default(autoincrement())
   com_title      String   
   comp_logo      String 
-  comp_description  String
+  comp_description  String @db.Text
   comp_phone  String
   comp_email String
   comp_website String
   comp_rating String
-  com_details String 
+  com_details String @db.Text
   created_at DateTime
   updated_at DateTime 
 }
@@ -28,13 +28,23 @@ model Offers{
   offer_type String
   offer_title String
   offer_code String
-  offer_description  String 
-  offer_link1 String
-  offer_link2 String 
-  offer_users String
+  offer_description  String @db.Text 
+  offer_link1 String @db.Text
+  offer_link2 String  @db.Text
+  offer_users String 
   offer_expiry String
-  offer_isverify String 
+  offer_isverify String  
   offer_details String
+  created_at DateTime
+  updated_at DateTime 
+}
+
+
+model Faqs{
+  id Int @id @default(autoincrement())
+  comp_id Int
+  question String @db.Text
+  answer String @db.Text
   created_at DateTime
   updated_at DateTime 
 }

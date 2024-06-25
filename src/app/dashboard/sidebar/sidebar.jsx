@@ -28,11 +28,7 @@ const menuItems = [
   {
     title: "Store",
     list: [
-      {
-        title: "Dashboard",
-        path: "/dashboard",
-        icon: <MdDashboard />,
-      },
+      
       {
         title: "Companies",
         path: "/admin/Companies",
@@ -42,6 +38,11 @@ const menuItems = [
         title: "Offers",
         path: "/admin/Offers",
         icon: <GrProductHunt />,
+      },
+      {
+        title: "FAQ's",
+        path: "/admin/Faqs",
+        icon: <MdDashboard />,
       },
 
     ],
