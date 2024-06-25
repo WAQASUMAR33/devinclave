@@ -74,7 +74,7 @@ const OffersPPage = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/company");
+      const response = await axios.get("api/company");
       setData(response.data);
     } catch (error) {
       console.error("Error fetching data: ", error);
@@ -93,7 +93,7 @@ const OffersPPage = () => {
       formDataToSend.append("id", deleteConfirmation.id);
 
       const response = await fetch(
-        `http://localhost:3000/api/offers/${deleteConfirmation.id}`,
+        `api/offers/${deleteConfirmation.id}`,
         {
           method: "DELETE",
           body: formDataToSend,
@@ -213,7 +213,7 @@ const OffersPPage = () => {
       });
 
       const result = await httpAxios
-        .post("http://localhost:3000/api/offers", formData)
+        .post("api/offers", formData)
         .then((response) => response.data);
       console.log(result);
       toast.success("Record Has Been added Successfully  !");
@@ -259,7 +259,7 @@ const OffersPPage = () => {
 
       const result = await httpAxios
         .post(
-          `http://localhost:3000/api/offers/${editingCategory.id}`,
+          `api/offers/${editingCategory.id}`,
           editingCategory
         )
         .then((response) => response.data);
@@ -287,7 +287,7 @@ const OffersPPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/offers");
+        const response = await fetch("api/offers");
         if (!response.ok) {
           throw new Error("Failed to fetch Sizes");
           console.log("Failed to fetch Sizes");
@@ -396,7 +396,7 @@ const OffersPPage = () => {
       });
 
       const result = await httpAxios
-        .put("http://localhost:3000/api/offers/1", editingCategory)
+        .put("api/offers/1", editingCategory)
         .then((response) => response.data);
       console.log(result);
       toast.success("Record Has Been added Successfully  !");
@@ -405,7 +405,7 @@ const OffersPPage = () => {
 
       console.log("done");
 
-      const updatedResponse = await fetch("http://localhost:3000/api/offers");
+      const updatedResponse = await fetch("api/offers");
 
       if (!updatedResponse.ok) {
         throw new Error("Failed to fetch updated offers");

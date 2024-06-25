@@ -12,7 +12,7 @@ export default function FaqPage() {
   }, []);
 
   const fetchQuestions = async () => {
-    const res = await fetch('/api/faqs');
+    const res = await fetch('api/faqs');
     const data = await res.json();
     setQuestions(data);
   };
@@ -20,14 +20,14 @@ export default function FaqPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (editId) {
-      await fetch(`/api/faqs/${editId}`, {
+      await fetch(`api/faqs/${editId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
       setEditId(null);
     } else {
-      await fetch('/api/faqs', {
+      await fetch('api/faqs', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -43,7 +43,7 @@ export default function FaqPage() {
   };
 
   const handleDelete = async (id) => {
-    await fetch(`/api/faqs/${id}`, {
+    await fetch(`api/faqs/${id}`, {
       method: 'DELETE',
     });
     fetchQuestions();

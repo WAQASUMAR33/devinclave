@@ -35,6 +35,12 @@ import { MdDeleteForever } from "react-icons/md";
 import { toast } from "react-toastify";
 import axios from "axios";
 
+
+export const getApiBaseUrl = () => {
+  return process.env.BASE_URL;
+};
+
+
 const AddCompanies = () => {
   //const [categories, setCategories] = useState([]);
 
@@ -56,6 +62,8 @@ const AddCompanies = () => {
     id: null,
   });
 
+
+
   const handleDelete = (row) => {
     if (row && row.id) {
       setDeleteConfirmation({ open: true, id: row.id });
@@ -67,11 +75,12 @@ const AddCompanies = () => {
 
   const handleConfirmDelete = async () => {
     try {
+      const baseUrl = getApiBaseUrl();
       const formDataToSend = new FormData();
       formDataToSend.append("id", deleteConfirmation.id);
 
       const response = await fetch(
-        `http://localhost:3000/api/company/${deleteConfirmation.id}`,
+        `https://devinclave.vercel.app/api/company/${deleteConfirmation.id}`,
         {
           method: "DELETE",
           body: formDataToSend,
@@ -175,12 +184,10 @@ const AddCompanies = () => {
       return;
     }
     try {
-      const httpAxios = axios.create({
-        baseURL: process.env.BASE_URL,
-      });
+      const baseUrl = getApiBaseUrl();
 
       const result = await httpAxios
-        .post("http://localhost:3000/api/company", formData)
+        .post(`https://devinclave.vercel.app/api/company`, formData)
         .then((response) => response.data);
       console.log(result);
       toast.success("Record Has Been added Successfully  !");
@@ -226,9 +233,9 @@ const AddCompanies = () => {
       const httpAxios = axios.create({
         baseURL: process.env.BASE_URL,
       });
-
+      const baseUrl = getApiBaseUrl();
       const result = await httpAxios
-        .post(`http://localhost:3000/api/company/${editingCategory.id}`, editingCategory)
+        .post(`https://devinclave.vercel.app/api/company/${editingCategory.id}`, editingCategory)
         .then((response) => response.data);
       console.log(result);
       toast.success("Record Has Been added Successfully  !");
@@ -254,9 +261,10 @@ const AddCompanies = () => {
   };
 
   useEffect(() => {
+    const baseUrl = getApiBaseUrl();
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/company");
+        const response = await fetch(`https://devinclave.vercel.app/api/company`);
         if (!response.ok) {
           throw new Error("Failed to fetch Sizes");
           console.log("Failed to fetch Sizes");
@@ -288,8 +296,9 @@ const AddCompanies = () => {
         Header: "Logo",
         accessor: "comp_logo",
         Cell: ({ value }) => {
+          const baseUrl = getApiBaseUrl();
           const imagePath = value.trim(); // Adjust based on your actual data structure
-          const imageUrl = `/companies/${imagePath}`;
+          const imageUrl = `https://devinclave.vercel.app/companies/${imagePath}`;
 
           return (
             <img
@@ -382,8 +391,9 @@ const AddCompanies = () => {
         baseURL: process.env.BASE_URL,
       });
 
+      const baseUrl = getApiBaseUrl();
       const result = await httpAxios
-        .put("http://localhost:3000/api/company/1", editingCategory)
+        .put(`https://devinclave.vercel.app/api/company/1`, editingCategory)
         .then((response) => response.data);
       console.log(result);
       toast.success("Record Has Been added Successfully  !");
@@ -392,7 +402,7 @@ const AddCompanies = () => {
 
       console.log("done");
 
-      const updatedResponse = await fetch("http://localhost:3000/api/company");
+      const updatedResponse = await fetch(`https://devinclave.vercel.app/api/company`);
 
       if (!updatedResponse.ok) {
         throw new Error("Failed to fetch updated company");
