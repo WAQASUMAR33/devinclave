@@ -74,7 +74,7 @@ const OffersPPage = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("api/company");
+      const response = await axios.get("https://devinclave.vercel.app/api/offers");
       setData(response.data);
     } catch (error) {
       console.error("Error fetching data: ", error);
@@ -93,7 +93,7 @@ const OffersPPage = () => {
       formDataToSend.append("id", deleteConfirmation.id);
 
       const response = await fetch(
-        `api/offers/${deleteConfirmation.id}`,
+        `https://devinclave.vercel.app/api/offers/${deleteConfirmation.id}`,
         {
           method: "DELETE",
           body: formDataToSend,
@@ -213,7 +213,7 @@ const OffersPPage = () => {
       });
 
       const result = await httpAxios
-        .post("api/offers", formData)
+        .post("https://devinclave.vercel.app/api/offers", formData)
         .then((response) => response.data);
       console.log(result);
       toast.success("Record Has Been added Successfully  !");
@@ -259,7 +259,7 @@ const OffersPPage = () => {
 
       const result = await httpAxios
         .post(
-          `api/offers/${editingCategory.id}`,
+          `https://devinclave.vercel.app/api/offers/${editingCategory.id}`,
           editingCategory
         )
         .then((response) => response.data);
@@ -287,7 +287,7 @@ const OffersPPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("api/offers");
+        const response = await fetch("https://devinclave.vercel.app/api/offers");
         if (!response.ok) {
           throw new Error("Failed to fetch Sizes");
           console.log("Failed to fetch Sizes");
@@ -396,7 +396,7 @@ const OffersPPage = () => {
       });
 
       const result = await httpAxios
-        .put("api/offers/1", editingCategory)
+        .put("https://devinclave.vercel.app/api/offers/1", editingCategory)
         .then((response) => response.data);
       console.log(result);
       toast.success("Record Has Been added Successfully  !");
@@ -405,7 +405,7 @@ const OffersPPage = () => {
 
       console.log("done");
 
-      const updatedResponse = await fetch("api/offers");
+      const updatedResponse = await fetch("https://devinclave.vercel.app/api/offers");
 
       if (!updatedResponse.ok) {
         throw new Error("Failed to fetch updated offers");
@@ -803,7 +803,7 @@ const OffersPPage = () => {
 
               {imageFile && (
                 <img
-                  src={`/companies/${editingCategory.comp_logo}`}
+                  src={`api/offers/${editingCategory.comp_logo}`}
                   alt="Image Preview"
                   style={{
                     maxWidth: "100px",
