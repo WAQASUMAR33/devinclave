@@ -12,7 +12,8 @@ const Card = ({ item }) => {
           <span className={item.change > 0 ? styles.positive : styles.negative}>
             {item.change}%
           </span>{" "}
-          {item.change > 0 ? "more" : "less"} than previous week
+          {item.change > 0 ? "more" : "less"}
+          then the whole week
         </span>
       </div>
     </div>
