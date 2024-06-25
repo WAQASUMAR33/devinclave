@@ -80,7 +80,7 @@ const AddCompanies = () => {
       formDataToSend.append("id", deleteConfirmation.id);
 
       const response = await fetch(
-        `https://devinclave.vercel.app/api/company/${deleteConfirmation.id}`,
+        `http://localhost:3000/api/company/${deleteConfirmation.id}`,
         {
           method: "DELETE",
           body: formDataToSend,
@@ -187,7 +187,7 @@ const AddCompanies = () => {
       const baseUrl = getApiBaseUrl();
 
       const result = await httpAxios
-        .post(`https://devinclave.vercel.app/api/company`, formData)
+        .post(`http://localhost:3000/api/company`, formData)
         .then((response) => response.data);
       console.log(result);
       toast.success("Record Has Been added Successfully  !");
@@ -235,7 +235,7 @@ const AddCompanies = () => {
       });
       const baseUrl = getApiBaseUrl();
       const result = await httpAxios
-        .post(`https://devinclave.vercel.app/api/company/${editingCategory.id}`, editingCategory)
+        .post(`http://localhost:3000/api/company/${editingCategory.id}`, editingCategory)
         .then((response) => response.data);
       console.log(result);
       toast.success("Record Has Been added Successfully  !");
@@ -298,7 +298,7 @@ const AddCompanies = () => {
         Cell: ({ value }) => {
           const baseUrl = getApiBaseUrl();
           const imagePath = value.trim(); // Adjust based on your actual data structure
-          const imageUrl = `https://devinclave.vercel.app/companies/${imagePath}`;
+          const imageUrl = `http://localhost:3000/companies/${imagePath}`;
 
           return (
             <img
@@ -393,7 +393,7 @@ const AddCompanies = () => {
 
       const baseUrl = getApiBaseUrl();
       const result = await httpAxios
-        .put(`https://devinclave.vercel.app/api/company/1`, editingCategory)
+        .put(`http://localhost:3000/api/company/1`, editingCategory)
         .then((response) => response.data);
       console.log(result);
       toast.success("Record Has Been added Successfully  !");
@@ -402,7 +402,7 @@ const AddCompanies = () => {
 
       console.log("done");
 
-      const updatedResponse = await fetch(`https://devinclave.vercel.app/api/company`);
+      const updatedResponse = await fetch(`http://localhost:3000/api/company`);
 
       if (!updatedResponse.ok) {
         throw new Error("Failed to fetch updated company");

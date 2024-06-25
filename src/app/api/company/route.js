@@ -44,6 +44,6 @@ export async function GET() {
     return NextResponse.json(companies);
   } catch (error) {
     console.log("Error getting Data :", error);
-    return NextResponse.error("Internal Server Error", 500);
+    return NextResponse.error("Internal Server Error"+ error, 500);
   }
 }
